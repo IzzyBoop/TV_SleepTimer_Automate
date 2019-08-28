@@ -3,6 +3,7 @@ import subprocess
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 print("----------------------TV Automation Script-----------------------")
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+#im a fricken arteest
 print("                         ___________________")
 print("                         | 18              |")
 print("                         | 17    LOBBY     |")
@@ -11,9 +12,9 @@ print("                         | 15              |")
 print("            _____________|_________________|")
 print("            |            | 1.  172.19.16.10     13. 172.19.16.69")
 print("            |   Striven  | 2.  172.19.16.12     14. 172.19.16.27")
-print("            |            | 3.  172.xx.xx.xxx    15. 172.19.23.219")
+print("            |            | 3.  172.19.16.36     15. 172.19.23.219")
 print("    MAP     |        1   | 4.  172.19.16.28     16. 172.19.20.152")
-print("            |        -   | 5.  172.xx.xx.xxx    17. 172.19.16.8")
+print("            |        -   | 5.  172.19.16.211    17. 172.19.16.8")
 print("            |        2   | 6.  172.19.16.212    18. 172.19.23.195")
 print("____________|_______     | 7.  172.19.16.7")
 print("|                        | 8.  172.19.16.16")
@@ -34,9 +35,9 @@ while True:
 
     tvArr = ["172.19.16.10",
     "172.19.16.12",
-    "172.19.16.xxx",
+    "172.19.16.36",
     "172.19.16.28",
-    "172.19.16.xxx",
+    "172.19.16.211",
     "172.19.16.212",
     "172.19.16.7",
     "172.19.16.16",
@@ -53,12 +54,13 @@ while True:
 
     try:
         inputInt = int(tvSelect)
-        tvArrNum = inputInt - 1
+        tvArrNum = inputInt - 1 #because array do the whole 0 thing
 
         if inputInt < 1 or inputInt > 18:
             print("Please select a number from 1-18")
         else:
             tv = tvArr[tvArrNum]
+            #ADB commands below, may need to be cleaned up, may also not even work, sue me.
             print("the command runs, good job, nerd. TV IP: " + tv)
             one = subprocess.check_output("adb kill-server").decode('utf-8')
             print(one)
@@ -76,3 +78,4 @@ while True:
             print(seven)
     except:
         print("Input has to be a number. (Or command failed)")
+#yeet
