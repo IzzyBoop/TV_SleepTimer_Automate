@@ -32,7 +32,7 @@ print("")
 while True:
     tvSelect = input("Make a TV Selection: ")
 
-    tvArr = ["172.19.17.18",
+    tvArr = ["172.19.16.10",
     "172.19.16.12",
     "172.19.16.xxx",
     "172.19.16.28",
@@ -55,11 +55,11 @@ while True:
         inputInt = int(tvSelect)
         tvArrNum = inputInt - 1
 
-        if inputInt < 1 or inputInt > 14:
-            print("Please select a number from 1-14")
+        if inputInt < 1 or inputInt > 18:
+            print("Please select a number from 1-18")
         else:
-            print("the command runs, good job, nerd.")
             tv = tvArr[tvArrNum]
+            print("the command runs, good job, nerd. TV IP: " + tv)
             one = subprocess.check_output("adb kill-server").decode('utf-8')
             print(one)
             two = subprocess.check_output("adb start-server").decode('utf-8')
@@ -75,4 +75,4 @@ while True:
             seven = subprocess.check_output("adb kill-server").decode('utf-8')
             print(seven)
     except:
-        print("Input has to be a number.")
+        print("Input has to be a number. (Or command failed)")
