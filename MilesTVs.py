@@ -1,9 +1,10 @@
 import subprocess
 
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-print("----------------------TV Automation Script-----------------------")
+print("---------------------TV Sleep Timer Script-----------------------")
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 #im a fricken arteest
+print("")
 print("                         ___________________")
 print("                         |     |/   \|     |")
 print("                         | 18              |")
@@ -22,7 +23,7 @@ print("|                        | 8.  172.19.16.16")
 print("|     T1        Proj.    | 9.  172.19.17.18")
 print("|     3           5      | 10. 172.19.16.204")
 print("|     -           -      | 11. 172.19.16.11")
-print("|     4           6      | 12. 172.19.16.245")
+print("|     4           6      | 12. 172.19.16.245    0. Manual Input")
 print("|                        |___________________________________")
 print("|                                                           |")
 print("|     T3            T4       Software           Web         |")
@@ -60,8 +61,32 @@ while True:
         inputInt = int(tvSelect)
         tvArrNum = inputInt - 1 #because array do the whole 0 thing
 
-        if inputInt < 1 or inputInt > 18:
-            print("***Please select a number from 1-18***")
+        if inputInt < 0 or inputInt > 18:
+            print("***Please select a number from 0-18***")
+        elif inputInt == 0:
+            # TODO: Refactor this whole section into a single function
+            manInput = input("Please enter IP Address: ")
+            print("Attempting adb kill-server on " + manInput)
+            one = subprocess.check_output("adb kill-server").decode('utf-8')
+            print(one)
+            print("Attempting adb start-server on " + manInput)
+            two = subprocess.check_output("adb start-server").decode('utf-8')
+            print(two)
+            print("Attempting adb connect on " + manInput)
+            three = subprocess.check_output("adb connect " + manInput).decode('utf-8')
+            print(three)
+            print("Attempting db shell settings put secure sleep_timeout 0 on " + manInput)
+            four = subprocess.check_output("adb shell settings put secure sleep_timeout 0").decode('utf-8')
+            print(four)
+            print("Attempting adb shell settings put system screen_off_timeout 2147460000 on " + manInput)
+            five = subprocess.check_output("adb shell settings put system screen_off_timeout 2147460000").decode('utf-8')
+            print(five)
+            print("Attempting adb disconnect on " + manInput)
+            six = subprocess.check_output("adb disconnect " + manInput).decode('utf-8')
+            print(six)
+            print("Attempting adb kill-server on " + manInput)
+            seven = subprocess.check_output("adb kill-server").decode('utf-8')
+            print(seven)
         else:
             tv = tvArr[tvArrNum]
             #ADB commands below
