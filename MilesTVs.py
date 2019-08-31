@@ -59,18 +59,20 @@ while True:
     ]
 
     def ADB_Function(tv):
-        print("Attempting adb connect on " + tv)
-        adbConnect = subprocess.check_output("adb connect " + tv).decode('utf-8')
+        tvPort = "5555"
+        print("Attempting adb connect on " + tv + ":" + tvPort)
+        adbConnect = subprocess.check_output("adb connect " + tv + ":" + tvPort).decode('utf-8')
         print(adbConnect)
-        print("Attempting db shell settings put secure sleep_timeout 0 on " + tv)
+        print("Attempting db shell settings put secure sleep_timeout 0 on " + tv + ":" + tvPort)
         slpTimer = subprocess.check_output("adb shell settings put secure sleep_timeout 0").decode('utf-8')
         print(slpTimer)
-        print("Attempting adb shell settings put system screen_off_timeout 2147460000 on " + tv)
+        print("Attempting adb shell settings put system screen_off_timeout 2147460000 on " + tv + ":" + tvPort)
         scrnOff = subprocess.check_output("adb shell settings put system screen_off_timeout 2147460000").decode('utf-8')
         print(scrnOff)
-        print("Attempting adb disconnect on " + tv)
-        disconnect = subprocess.check_output("adb disconnect " + tv).decode('utf-8')
+        print("Attempting adb disconnect on " + tv + ":" + tvPort)
+        disconnect = subprocess.check_output("adb disconnect " + tv + ":" + tvPort).decode('utf-8')
         print(disconnect)
+        print("Finished")
 
     try:
         inputInt = int(tvSelect)
