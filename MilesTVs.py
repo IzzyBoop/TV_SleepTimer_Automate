@@ -3,7 +3,7 @@ import subprocess
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 print("---------------------TV Sleep Timer Script-----------------------")
 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-print("(Requires ADB to run)")
+print("(Requires ADB to be installed and added to PATH)")
 #im a fricken arteest
 print("")
 print("                         ___________________")
